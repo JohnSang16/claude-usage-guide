@@ -57,34 +57,26 @@ replies cost more per token, but there are so few of them that they barely count
 
 ### when the task is bigger
 
-split it into stages, one chat each, and pass a short note between them.
+as devs, we make big code changes on prod, and those can be big tasks. the main idea is to break them into smaller tasks, using the same idea as spec-driven development (SDD): write the spec or plan first, then build from it one small stage at a time.
 
-1. **plan first, in its own chat:** have claude write a short plan to a file, split into stages that each fit in one chat. this is where "define done" pays off.
-2. **one stage per chat:** each chat reads the plan file and does only its stage.
-3. **end each stage with a handoff note:** a few lines in a file: what was done, what changed, what is still open. the next chat starts from the plan plus that note, not from the old chat.
-4. **delegate big reads inside a stage:** a subagent can read a codebase or run long checks and return a summary.
-5. **if a stage runs long anyway:** `/compact` at a natural break, or `/clear` and paste the handoff note.
+1. **plan first:** in its own chat, have claude write a short plan file, split into stages that each fit in one chat. this is where "define done" pays off.
+2. **one stage per chat:** each chat reads the plan and does only its stage.
+3. **end with a handoff note:** a few lines in a file: what was done, what changed, what is still open. the next chat starts from the plan plus this note.
+4. **big reads:** hand them to a subagent that returns a summary.
+5. **stage runs long:** `/compact` at a natural break, or `/clear` and paste the handoff note.
 
 the plan file and handoff notes are the memory, and the chat is only the workspace for one stage.
 
-### the 4 commands (claude code)
+### commands: when to use what
 
-| command | what it does |
+| when this happens | do this |
 |---|---|
-| `/clear` | wipes the chat and starts fresh with an empty binder. claude forgets everything, so paste back anything it still needs. |
-| `/compact` | squeezes the chat into a short summary and keeps going in the same conversation. a smaller binder, same thread. |
-| `/context` | shows what is filling the context window (messages, files, tools, instructions) so you can see what to cut. |
-| `/cost` | shows what the current session has cost so far. |
-
-### when this happens, do this
-
-| situation | action |
-|---|---|
-| task done, or next task is unrelated | `/clear` |
-| chat is getting long (over 10 to 15% of the context window used) | `/compact`, or `/clear` and paste a short summary |
-| you want a different model | `/clear` first |
-| big file or research | search or read only the lines you need, give a file path instead of pasting, or use a subagent |
-| not sure what is using space | `/context` shows the binder, `/cost` shows the bill |
+| task done, or next task is unrelated | `/clear`: wipes the chat and starts with an empty binder. paste back anything claude still needs. |
+| chat is getting long (over 10 to 15% of the context window used) | `/compact`: squeezes the chat into a short summary, same thread. or `/clear` and paste a short summary. |
+| you want a different model | `/clear` first, then switch. |
+| not sure what is filling the chat | `/context`: shows what is using the window (messages, files, tools, instructions) so you can see what to cut. |
+| want to see the bill | `/cost`: shows what the session has cost so far. |
+| big file or research | search or read only the lines you need, give a file path instead of pasting, or use a subagent. |
 
 ### write short and specific
 
