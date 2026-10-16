@@ -49,10 +49,10 @@ replies cost more per token, but there are so few of them that they barely count
 
 ### 5 core rules
 
-1. **small chat.** one task per chat. when it is done, start fresh. *why: every old message is re-read each time you send a new one.*
-2. **fewer messages.** decide what you want, then batch your questions into one message instead of sending them one at a time. *why: each message re-sends the whole chat.*
-3. **right model.** sonnet by default, opus for hard reasoning. *why: opus costs about twice as much for new text and replies.*
-4. **delegate.** keep the main chat for planning. send big jobs to a subagent: a helper chat with its own fresh binder that returns only a short summary. give it a clear brief: its goal, the files, what to return, and a short handoff when done. *why: the big read never enters your main chat.*
+1. **delegate.** keep the main chat lean. use it for planning and decisions, and hand big jobs to a helper instead of doing them in the main chat. *why: the big read never enters your main chat.*
+2. **small chat.** one task per chat, and start fresh when it is done. this is the same idea as spawning a subagent: a helper chat with its own fresh binder that returns only a short summary. give it a clear brief: its goal, the files, what to return, and a short handoff when done. *why: every old message is re-read each time you send a new one.*
+3. **fewer messages.** decide what you want, then batch it into one message instead of sending small messages or small asks one after another. *why: each message re-sends the whole chat.*
+4. **right model.** sonnet by default, opus for hard reasoning. *why: opus costs about twice as much for new text and replies.*
 5. **keep the notes warm.** no model or tool changes mid chat, and no long breaks mid task. *why: a change early on makes claude re-read everything at full price.*
 
 ### the 4 commands (claude code)
