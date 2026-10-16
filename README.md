@@ -49,10 +49,10 @@ replies cost more per token, but there are so few of them that they barely count
 
 ### 5 core rules
 
-1. **define done first.** before you start, write down the goal and what "done" looks like. if your team has a scoping template or skill, use it. if not, three lines is enough: the goal, how you will know it is finished, and what is out of scope. *why: without an aim, chats wander, and a wandering chat gets long.*
-2. **delegate.** keep the main chat lean. use it for planning and decisions, and hand big jobs to a helper instead of doing them in the main chat. *why: the big read never enters your main chat.*
-3. **small chat.** one task per chat, and start fresh when it is done. this is the same idea as spawning a subagent: a helper chat with its own fresh binder that returns only a short summary. give it a clear brief: its goal, the files, what to return, and a short handoff when done. *why: every old message is re-read each time you send a new one.*
-4. **fewer messages.** decide what you want, then batch it into one message instead of sending small messages or small asks one after another. *why: each message re-sends the whole chat.*
+1. **delegate.** keep the main chat lean. use it for planning and decisions, and hand big jobs to a helper. *why: the big read never enters your main chat.*
+2. **small chat.** one task per chat, then start fresh. a subagent is the same idea: a helper chat that returns only a short summary. give it a clear brief: goal, files, what to return, and a short handoff. *why: every old message is re-read each time you send a new one.*
+3. **define done.** before you start, write down the goal and what "done" looks like. a scoping template or skill helps if your team has one. *why: no aim means a wandering, long chat.*
+4. **fewer messages.** decide what you want, then batch it into one message instead of sending small asks one after another. *why: each message re-sends the whole chat.*
 5. **right model, steady setup.** sonnet by default, opus for hard reasoning. do not change the model or tools mid chat, and avoid long breaks mid task. *why: opus costs about twice as much for new text and replies, and a change early on makes claude re-read everything at full price.*
 
 ### when the task is bigger
