@@ -45,9 +45,9 @@ replies are so few they barely count, and re-reading costs about the same on opu
 
 ## part 3: the solution
 
-**keep the context window as lean as possible.**
+**#1 tip: keep the context window as lean as possible.**
 
-the mindset: be conscious of what you spend, and remember that less is more. you don't have to use claude for everything.
+be conscious of what you spend, and remember that less is more.
 
 ### 5 core rules
 
