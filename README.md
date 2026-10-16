@@ -47,6 +47,8 @@ replies are so few they barely count, and re-reading costs about the same on opu
 
 **keep the context window as lean as possible.**
 
+the mindset: be conscious of what you spend, and remember that less is more. you don't have to use claude for everything.
+
 ### 5 core rules
 
 1. **delegate.** keep the main chat lean. use it for planning and decisions, and hand big jobs to a helper. *why: the big read never enters your main chat.*
@@ -59,9 +61,7 @@ replies are so few they barely count, and re-reading costs about the same on opu
 
 as devs, we make big code changes on prod, and those can be big tasks. break them into smaller tasks using the SDD (spec-driven development) idea: write the spec or plan first, then build from it one stage at a time.
 
-two additions keep it cheap: run each stage in a fresh context window (a new chat), and end each stage with a short handoff note (done, changed, still open) so the next stage starts from the plan plus the note, not the old context. to get a fresh window, `/clear` or start a new chat, or tell claude "run stage 2 in a subagent": it works in its own window and returns only a short summary, which is the delegate rule.
-
-the plan file and handoff notes are the memory, and the chat is only the workspace for one stage.
+two additions keep it cheap: run each stage in a fresh context window, and end each stage with a short handoff note (done, changed, still open) so the next stage starts from the plan plus the note, not the old context. get a fresh window by starting a new chat, or tell claude "run stage 2 in a subagent": it works in its own window and returns only a short summary, which is the delegate rule.
 
 ### commands: when to use what
 
