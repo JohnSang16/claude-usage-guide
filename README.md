@@ -99,18 +99,18 @@ material:
 
 ### keeping long term history cheaply
 
-keep your history in a filing cabinet of notes, not in the backpack you carry every message.
+keep history in plain text notes you can reopen later, not in the chat.
 
-claude re-reads the whole chat every time you send a message, so a long chat gets expensive. think of the chat as a backpack you carry all day: the more papers inside, the heavier every trip. so don't keep your history in the backpack. keep it in a filing cabinet, which is a folder of plain text notes (obsidian is a nice way to browse them, but claude just reads the files). when you need something old, claude pulls out just that one paper and puts it back. the backpack stays light and nothing is lost.
+to pick work back up tomorrow, or revisit an old project without searching chat logs, keep your history as plain text notes in a folder (obsidian or any file manager works) and let claude open only the note it needs.
 
 1. **keep a short index:** one file listing what each note covers.
-2. **look up on demand:** search for the topic and open only that note, never "read all my notes".
+2. **look up on demand:** open only the note you need, never "read all my notes".
 3. **write results back:** save the conclusion to a note, then `/clear`.
 
-what quietly cancels the savings, like stuffing the cabinet back into the backpack:
+what quietly cancels the savings:
 
-- **files loaded on every chat:** an instructions file or memory index is read at the start of every chat, so a bloated one is paid for on every message. keep these short.
-- **loading too much up front:** starting every chat by loading all your history brings the big binder back.
-- **notes that only grow:** a log that gets longer every week costs more each time it is opened. shrink finished entries to their conclusion.
+- **bloated always-loaded files:** instructions and memory files are read every chat, so keep them short.
+- **loading all history up front:** brings the big backpack back.
+- **notes that only grow:** shrink finished entries to their conclusion.
 
 for the full setup, see my obsidian guide: [second-brain-guide](https://github.com/JohnSang16/second-brain-guide), a student-specific guide to pairing obsidian and claude code into an agentic second brain.
