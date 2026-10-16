@@ -1,6 +1,6 @@
 # claude usage optimal standards
 
-a simple guide to how claude usage is counted, why it gets expensive, and how to keep it low. 
+a simple guide to how claude usage is counted, why it gets expensive, and how to keep it low.
 
 **the main rule: keep the context window as lean as possible.**
 
@@ -20,7 +20,7 @@ a token is a small chunk of text, about 3/4 of a word. everything claude does co
 
 ### the catch: it re-reads everything
 
-claude has no memory. every time you send a message, it re-reads the whole conversation from the start, then answers your newest message. think of a tutor who forgets everything the second they finish talking, so you hand them the full binder of notes every time. one answer with 10 tool calls hands over the binder 10 times.
+claude has no memory, so every message re-reads the whole conversation first. think of a tutor who forgets everything the second they finish talking, so you hand them the full binder of notes every time. one answer with 10 tool calls hands over the binder 10 times.
 
 **cache:** claude's saved notes on the part of the binder it already read. if that part is exactly the same as last time, it uses the notes and charges only about 10% of the reading price. saving the notes the first time costs about 25% extra. the notes are thrown out after about 5 minutes of no activity.
 
@@ -33,7 +33,7 @@ picture the chat as 20 pages. page 1 is the setup claude gets before you say any
 
 in my case, i processed about 2 billion tokens in a single month. out of every 100 tokens, about 98 were re-reading old chat, about 2 were saving notes, and fewer than 1 was a reply. my longest chat ran 1,141 messages, re-reading about 200k tokens per message.
 
-replies cost more per token, but there are so few of them that they barely count. the model was not the main driver either: re-reading costs about the same on opus and sonnet at current prices. the real driver was chat length.
+replies are so few they barely count, and re-reading costs about the same on opus and sonnet. the real driver was chat length.
 
 ### common pitfalls
 
@@ -50,10 +50,10 @@ replies cost more per token, but there are so few of them that they barely count
 ### 5 core rules
 
 1. **delegate.** keep the main chat lean. use it for planning and decisions, and hand big jobs to a helper. *why: the big read never enters your main chat.*
-2. **small chat.** one task per chat, then start fresh. a subagent is the same idea: a helper chat that returns only a short summary. give it a clear brief: goal, files, what to return, and a short handoff. *why: every old message is re-read each time you send a new one.*
+2. **small chat.** one task per chat, then start fresh. a subagent is a helper chat that returns only a short summary, so give it a clear brief. *why: every old message is re-read each time you send a new one.*
 3. **define done.** before you start, write down the goal and what "done" looks like. a scoping template or skill helps if your team has one. *why: no aim means a wandering, long chat.*
 4. **fewer messages.** decide what you want, then batch it into one message instead of sending small asks one after another. *why: each message re-sends the whole chat.*
-5. **right model, steady setup.** sonnet by default, opus for hard reasoning. do not change the model or tools mid chat, and avoid long breaks mid task. *why: opus costs about twice as much for new text and replies, and changing the model or tools in the middle of a chat makes claude re-read the whole chat at full price.*
+5. **right model, steady setup.** sonnet by default, opus for hard reasoning. do not change the model or tools mid chat, and avoid long breaks mid task. *why: opus costs about twice as much, and changing the model or tools mid chat makes claude re-read everything at full price.*
 
 ### when the task is bigger
 
@@ -67,16 +67,16 @@ the plan file and handoff notes are the memory, and the chat is only the workspa
 
 | when this happens | do this |
 |---|---|
-| task done, or next task is unrelated | `/clear`: wipes the chat and starts with an empty binder. paste back anything claude still needs. |
+| task done or unrelated next task | `/clear`: wipes the chat and starts with an empty binder. paste back anything claude still needs. |
 | chat is getting long (over 10 to 15% of the context window used) | `/compact`: squeezes the chat into a short summary, same thread. or `/clear` and paste a short summary. |
 | you want a different model | `/clear` first, then switch. |
-| not sure what is filling the chat | `/context`: shows what is using the window (messages, files, tools, instructions) so you can see what to cut. |
+| not sure what is filling the chat | `/context`: shows what is filling the window so you can see what to cut. |
 | want to see the bill | `/cost`: shows what the session has cost so far. |
 | big file or research | search or read only the lines you need, give a file path instead of pasting, or use a subagent. |
 
 ### write short and specific
 
-each reply token costs about 5x a read token, and your wording sets how long replies run. the bigger cost is still the re-reading, so shorter chats come first, but short answers help too. put instructions in a short list, then the material under a label:
+replies cost about 5x a read token, and your wording sets their length. put instructions in a short list, then the material under a label:
 
 ```
 instructions:
@@ -91,11 +91,8 @@ material:
 - **get to the point:** skip the greeting and state the ask.
 - **name the output:** say what you want back (a table, a list, one paragraph) and how long.
 - **say what not to do:** "no recap, no extra options" saves a reply you would throw away.
-- **batch:** number several questions in one message.
 
 ### keeping long term history cheaply
-
-keep history in plain text notes you can reopen later, not in the chat.
 
 to pick work back up tomorrow, or revisit an old project without searching chat logs, keep your history as plain text notes in a folder (obsidian or any file manager works) and let claude open only the note it needs.
 
