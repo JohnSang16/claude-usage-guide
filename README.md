@@ -59,7 +59,7 @@ replies are so few they barely count, and re-reading costs about the same on opu
 
 as devs, we make big code changes on prod, and those can be big tasks. break them into smaller tasks using the SDD (spec-driven development) idea: write the spec or plan first, then build from it one stage at a time.
 
-two additions keep it cheap: run each stage in its own chat, and end each stage with a short handoff note (done, changed, still open) so the next chat starts from the plan plus the note, not the old chat.
+two additions keep it cheap: run each stage in a fresh context window (a new chat), and end each stage with a short handoff note (done, changed, still open) so the next stage starts from the plan plus the note, not the old context.
 
 the plan file and handoff notes are the memory, and the chat is only the workspace for one stage.
 
@@ -67,7 +67,7 @@ the plan file and handoff notes are the memory, and the chat is only the workspa
 
 | when this happens | do this |
 |---|---|
-| task done or unrelated next task | `/clear`: wipes the chat and starts with an empty binder. paste back anything claude still needs. |
+| task done or unrelated next task | `/clear`: wipes the context window and starts fresh. paste back anything claude still needs. |
 | chat is getting long (over 10 to 15% of the context window used) | `/compact`: squeezes the chat into a short summary, same thread. or `/clear` and paste a short summary. |
 | you want a different model | `/clear` first, then switch. |
 | not sure what is filling the chat | `/context`: shows what is filling the window so you can see what to cut. |
