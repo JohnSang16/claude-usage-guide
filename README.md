@@ -57,13 +57,9 @@ replies cost more per token, but there are so few of them that they barely count
 
 ### when the task is bigger
 
-as devs, we make big code changes on prod, and those can be big tasks. the main idea is to break them into smaller tasks, using the same idea as spec-driven development (SDD): write the spec or plan first, then build from it one small stage at a time.
+as devs, we make big code changes on prod, and those can be big tasks. break them into smaller tasks using the SDD (spec-driven development) idea: write the spec or plan first, then build from it one stage at a time.
 
-1. **plan first:** in its own chat, have claude write a short plan file, split into stages that each fit in one chat. this is where "define done" pays off.
-2. **one stage per chat:** each chat reads the plan and does only its stage.
-3. **end with a handoff note:** a few lines in a file: what was done, what changed, what is still open. the next chat starts from the plan plus this note.
-4. **big reads:** hand them to a subagent that returns a summary.
-5. **stage runs long:** `/compact` at a natural break, or `/clear` and paste the handoff note.
+two additions keep it cheap: run each stage in its own chat, and end each stage with a short handoff note (done, changed, still open) so the next chat starts from the plan plus the note, not the old chat.
 
 the plan file and handoff notes are the memory, and the chat is only the workspace for one stage.
 
