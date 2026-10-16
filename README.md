@@ -31,9 +31,9 @@ picture the chat as 20 pages. page 1 is the setup claude gets before you say any
 
 ## part 2: what makes it cost so much
 
-in my case, i spent $1,300+ in a single month. in my local chat logs, 65% of my spend was re-reading old chat, 22% was writing notes, and only 13% was replies. my longest chat ran 1,141 messages, re-reading about 200k tokens per message.
+in my case, i processed about 2 billion tokens in a single month. out of every 100 tokens, about 98 were re-reading old chat, about 2 were saving notes, and fewer than 1 was a reply. my longest chat ran 1,141 messages, re-reading about 200k tokens per message.
 
-the model was not the problem. opus was 59% of that spend, but switching everything to sonnet would have saved only about 12%, because re-reading costs about the same on both at current prices. the real driver was chat length.
+replies cost more per token, but there are so few of them that they barely count. the model was not the main driver either: re-reading costs about the same on opus and sonnet at current prices. the real driver was chat length.
 
 ### common pitfalls
 
