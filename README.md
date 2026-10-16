@@ -1,8 +1,8 @@
 # claude usage optimal standards
 
-a simple guide to how claude usage is counted, why it gets expensive, and how to keep it low. written so a person or an ai assistant can read it and apply it.
+a simple guide to how claude usage is counted, why it gets expensive, and how to keep it low. 
 
-**the one rule: keep the context window as lean as possible.**
+**the main rule: keep the context window as lean as possible.**
 
 ## part 1: how usage works
 
