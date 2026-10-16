@@ -49,11 +49,23 @@ replies cost more per token, but there are so few of them that they barely count
 
 ### 5 core rules
 
-1. **delegate.** keep the main chat lean. use it for planning and decisions, and hand big jobs to a helper instead of doing them in the main chat. *why: the big read never enters your main chat.*
-2. **small chat.** one task per chat, and start fresh when it is done. this is the same idea as spawning a subagent: a helper chat with its own fresh binder that returns only a short summary. give it a clear brief: its goal, the files, what to return, and a short handoff when done. *why: every old message is re-read each time you send a new one.*
-3. **fewer messages.** decide what you want, then batch it into one message instead of sending small messages or small asks one after another. *why: each message re-sends the whole chat.*
-4. **right model.** sonnet by default, opus for hard reasoning. *why: opus costs about twice as much for new text and replies.*
-5. **keep the notes warm.** no model or tool changes mid chat, and no long breaks mid task. *why: a change early on makes claude re-read everything at full price.*
+1. **define done first.** before you start, write down the goal and what "done" looks like. if your team has a scoping template or skill, use it. if not, three lines is enough: the goal, how you will know it is finished, and what is out of scope. *why: without an aim, chats wander, and a wandering chat gets long.*
+2. **delegate.** keep the main chat lean. use it for planning and decisions, and hand big jobs to a helper instead of doing them in the main chat. *why: the big read never enters your main chat.*
+3. **small chat.** one task per chat, and start fresh when it is done. this is the same idea as spawning a subagent: a helper chat with its own fresh binder that returns only a short summary. give it a clear brief: its goal, the files, what to return, and a short handoff when done. *why: every old message is re-read each time you send a new one.*
+4. **fewer messages.** decide what you want, then batch it into one message instead of sending small messages or small asks one after another. *why: each message re-sends the whole chat.*
+5. **right model, steady setup.** sonnet by default, opus for hard reasoning. do not change the model or tools mid chat, and avoid long breaks mid task. *why: opus costs about twice as much for new text and replies, and a change early on makes claude re-read everything at full price.*
+
+### when the task is bigger
+
+split it into stages, one chat each, and pass a short note between them.
+
+1. **plan first, in its own chat:** have claude write a short plan to a file, split into stages that each fit in one chat. this is where "define done" pays off.
+2. **one stage per chat:** each chat reads the plan file and does only its stage.
+3. **end each stage with a handoff note:** a few lines in a file: what was done, what changed, what is still open. the next chat starts from the plan plus that note, not from the old chat.
+4. **delegate big reads inside a stage:** a subagent can read a codebase or run long checks and return a summary.
+5. **if a stage runs long anyway:** `/compact` at a natural break, or `/clear` and paste the handoff note.
+
+the plan file and handoff notes are the memory, and the chat is only the workspace for one stage.
 
 ### the 4 commands (claude code)
 
