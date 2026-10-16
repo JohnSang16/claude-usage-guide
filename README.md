@@ -74,6 +74,8 @@ the plan file and handoff notes are the memory, and the chat is only the workspa
 | want to see the bill | `/cost`: shows what the session has cost so far. |
 | big file or research | search or read only the lines you need, give a file path instead of pasting, or use a subagent. |
 
+**pro tip:** `/clear` does not delete the old chat. run `claude --resume` in your terminal to look through old chats and reopen one. resuming reloads the whole chat, so for ongoing work a handoff note plus a fresh chat is cheaper.
+
 ### write short and specific
 
 replies cost about 5x a read token, and your wording sets their length. put instructions in a short list, then the material under a label:
